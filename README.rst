@@ -10,7 +10,7 @@ Flask App for generating experimental stock forecasts
 Getting Started
 ---------------
 
-.. code-block::
+.. code-block:: none
 
     git clone git@github.com:EVEprosper/ProsperForecast.git
     pip3 install -e .
@@ -20,7 +20,7 @@ Getting Started
 Testing
 -------
 
-.. code-block::
+.. code-block:: none
 
     python setup.py test
 
