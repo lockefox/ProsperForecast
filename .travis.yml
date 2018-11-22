@@ -1,0 +1,15 @@
+language: python
+python: 
+  - "3.6"
+  - "3.7"
+  - "3.7-dev"
+install:
+  "pip install .[dev]"
+script:
+  - "python setup.py test"
+  - "rstcheck README.rst"
+  - "sphinx-apidoc -f -o docs/source forecast/"
+  - "sphinx-build -b html docs/ webpage"
+after_sucess:
+  - "pip install python-coveralls"
+  - "coveralls"

@@ -82,6 +82,7 @@ setup(
         '': ['LICENSE', 'README.rst'],
         'forecast': ['version.txt'],
     },
+    python_requires='>=3.6',
     install_requires=[
     ## cookiecutter requirements ##
         'flask',
