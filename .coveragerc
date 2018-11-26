@@ -3,6 +3,7 @@
         forecast/_version.py
         forecast/exceptions.py
         forecast/__init__.py
+        forecast/manage.py
 
 [paths]
     source = forecast

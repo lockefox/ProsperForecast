@@ -1,7 +1,7 @@
 """version/status/health endpoints for rest API"""
 
 import flask_restful
-import flask_jwt_extended
+from flask import current_app as app
 
 import forecast._version as _version
 
@@ -11,6 +11,7 @@ class VersionResource(flask_restful.Resource):
 
     def get(self):
         """HTTP GET: version info"""
+        app.logger.info('VERSION ENDPOINT')
         return dict(
             version=_version.__version__,
         )
