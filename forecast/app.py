@@ -26,7 +26,7 @@ def configure_app(app, testing=False):
     """set configuration for application
     """
     # default configuration
-    app.config.from_object('forecast.config.Production')
+    app.config.from_object('forecast.config.DefaultConfig')
     log_builder = p_logging.ProsperLogger(
         app.name,
         os.path.join(HERE, 'logs'),
@@ -37,8 +37,9 @@ def configure_app(app, testing=False):
         app.config.from_object('forecast.config.Test')
         log_builder.configure_debug_logger()
     else:
+        app.config.from_object('forecast.config.Production')
         # override with env variable, fail silently if not set
-        app.config.from_envvar('FORECAST_CONFIG', silent=True)
+        #app.config.from_envvar('FORECAST_CONFIG', silent=True)
         # TODO: log_builder.configure_slack_logger()
 
     for handler in log_builder.logger.handlers:

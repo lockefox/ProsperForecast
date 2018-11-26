@@ -18,9 +18,6 @@ class DefaultConfig(object):
     JWT_BLACKLIST_ENABLED = True
     JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
 
-    RH_USERNAME = ''
-    RH_PASSWORD = ''
-    SLACK_WEBHOOK = ''
     LOCAL_CONFIG = p_config.ProsperConfig(LOCAL_CONFIG_PATH)
 
 class Test(DefaultConfig):
@@ -34,9 +31,5 @@ class Production(DefaultConfig):
     # TODO: this sucks
     LOCAL_CONFIG = p_config.render_secrets(
         LOCAL_CONFIG_PATH,
-        os.environ.get('SECRET_CFG'),
+        os.environ.get('SECRET_CFG', ''),
     )
-
-    RH_USERNAME = LOCAL_CONFIG.get_option('FORECAST', 'rh_username')
-    RH_PASSWORD = LOCAL_CONFIG.get_option('FORECAST', 'rh_password')
-    SLACK_WEBHOOK = LOCAL_CONFIG.get_option('LOGGING', 'slack_webhook')
