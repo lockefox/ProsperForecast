@@ -1,7 +1,7 @@
 """version/status/health endpoints for rest API"""
 
 import flask_restful
-from flask import current_app as app
+from flask import current_app as app  # https://stackoverflow.com/a/52678595
 
 import forecast._version as _version
 

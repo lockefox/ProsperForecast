@@ -90,3 +90,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Secrets
+credentials.cfg
+config_local.cfg

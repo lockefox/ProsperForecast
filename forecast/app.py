@@ -26,7 +26,7 @@ def configure_app(app, testing=False):
     """set configuration for application
     """
     # default configuration
-    app.config.from_object('forecast.config')
+    app.config.from_object('forecast.config.Production')
     log_builder = p_logging.ProsperLogger(
         app.name,
         os.path.join(HERE, 'logs'),
@@ -34,7 +34,7 @@ def configure_app(app, testing=False):
 
     if testing is True:
         # override with testing config
-        app.config.from_object('forecast.configtest')
+        app.config.from_object('forecast.config.Test')
         log_builder.configure_debug_logger()
     else:
         # override with env variable, fail silently if not set

@@ -80,7 +80,7 @@ setup(
     package=find_packages(),
     package_data={
         '': ['LICENSE', 'README.rst'],
-        'forecast': ['version.txt'],
+        'forecast': ['version.txt', 'config.j2'],
     },
     python_requires='>=3.6',
     install_requires=[
@@ -99,6 +99,7 @@ setup(
         'ProsperDatareader',
         'fbprophet',
         'gunicorn',
+        'python-dotenv',
     ],
     tests_require=[
         'pytest',

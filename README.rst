@@ -29,6 +29,22 @@ Deployment
 
 TODO
 
+Secrets
+-------
+
+App expects a ``credentials.cfg`` file to pass in secrets
+
+.. code-block:: cfg
+
+    credentials.cfg
+    [logging]
+        slack_webhook = 
+
+    [forecast]
+        rh_username =
+        rh_password =
+
+
 .. |Show Logo| image:: http://dl.eveprosper.com/podcast/logo-colour-17_sm2.png
    :target: http://eveprosper.com
 .. |Build Status| image:: https://travis-ci.org/EVEprosper/ProsperForecast.svg?branch=master
