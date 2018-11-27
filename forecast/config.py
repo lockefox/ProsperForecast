@@ -33,7 +33,8 @@ class Production(DefaultConfig):
     # TODO: this sucks
     if not os.environ.get('SECRET_CFG', ''):
         warnings.warn('No SECRET_CFG given', exceptions.SecretMissing)
-    LOCAL_CONFIG = p_config.render_secrets(
-        LOCAL_CONFIG_PATH,
-        os.environ.get('SECRET_CFG', ''),
-    )
+    else:
+        LOCAL_CONFIG = p_config.render_secrets(
+            LOCAL_CONFIG_PATH,
+            os.environ.get('SECRET_CFG', ''),
+        )
