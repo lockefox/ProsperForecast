@@ -3,8 +3,10 @@
 Use env var to override
 """
 import os
+import warnings
 
 import prosper.common.prosper_config as p_config
+from . import exceptions
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 LOCAL_CONFIG_PATH = os.path.join(HERE, 'config.j2')
@@ -29,6 +31,8 @@ class Test(DefaultConfig):
 class Production(DefaultConfig):
     """pull production secrets from environ"""
     # TODO: this sucks
+    if not os.environ.get('SECRET_CFG', ''):
+        warnings.warn('No SECRET_CFG given', exceptions.SecretMissing)
     LOCAL_CONFIG = p_config.render_secrets(
         LOCAL_CONFIG_PATH,
         os.environ.get('SECRET_CFG', ''),
