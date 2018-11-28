@@ -42,8 +42,7 @@ def configure_app(app, testing=False):
         #app.config.from_envvar('FORECAST_CONFIG', silent=True)
         # TODO: log_builder.configure_slack_logger()
 
-    for handler in log_builder.logger.handlers:
-        app.logger.addHandler(handler)
+    [app.logger.addHandler(handler) for handler in log_builder.logger.handlers]
 
 def configure_extensions(app, cli):
     """configure flask extensions
