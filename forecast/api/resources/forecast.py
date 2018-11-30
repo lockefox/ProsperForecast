@@ -30,7 +30,7 @@ def get_history_from_robinhood(
         request_range (int): days of data to return (300 trading days/yr)
         bounds (str): what daily bounds to use (https://bit.ly/2DVbdxD)
         resource_uri (str): endpoint to request data from
-        **kwargs: used as buffer for Marshmallow schema.data
+        kwargs: used as buffer for Marshmallow schema.data
 
     Returns:
         pandas.DataFrame: trimmed data from endpoint
@@ -83,8 +83,14 @@ def generate_error(
 class ForecastSchema(ma.Schema):
 
     ticker = ma.String(required=True)
-    request_range = ma.Integer(default=600)
-    forecast_range = ma.Integer(default=60)
+    request_range = ma.Integer(
+        default=600,
+        validate=marshmallow.validate.Range(min=0, max=600),
+    )
+    forecast_range = ma.Integer(
+        default=60,
+        validate=marshmallow.validate.Range(min=7, max=180),
+    )
     bounds = ma.String(
         default='regular',
         validate=marshmallow.validate.OneOf(['extended', 'regular', 'trading']),
