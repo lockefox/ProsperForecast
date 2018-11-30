@@ -100,6 +100,7 @@ setup(
         'fbprophet',
         'gunicorn',
         'python-dotenv',
+        'mysqlclient',
     ],
     tests_require=[
         'pytest',
@@ -111,6 +112,7 @@ setup(
         'pytest-factoryboy',
         'pytest-flask',
         'pytest-runner',
+
     ],
     entry_points={
         'console_scripts': [

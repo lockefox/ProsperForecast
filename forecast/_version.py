@@ -9,7 +9,8 @@ except ImportError:
     INSTALLED = False
 
 HERE = path.abspath(path.dirname(__file__))
-__library_name__ = 'test_utils'
+__library_name__ = 'forecast'
+
 def get_version():
     """find current version information
 

@@ -1,5 +1,7 @@
+"""sqlalchemy schemas for Forecast endpoints"""
+from datetime import datetime
 from forecast.extensions import db
-
+from flask_jwt_extended import get_jwt_identity
 class ForecastModel(db.Model):
     """request model"""
     id = db.Column(
@@ -9,7 +11,6 @@ class ForecastModel(db.Model):
     user_id = db.Column(
         db.Integer,
         db.ForeignKey('user.id'),
-        unique=True,
         nullable=False,
     )
     ticker = db.Column(
@@ -28,6 +29,21 @@ class ForecastModel(db.Model):
         db.DateTime,
         nullable=False,
     )
-    outcome = db.Column(
+    status = db.Column(
         db.Text,
     )
+
+    def __init__(
+            self,
+            ticker,
+            request_range=600,
+            forecast_range=60,
+            **kwargs,
+    ):
+        """load that data"""
+        self.user_id = get_jwt_identity()
+        self.request_datetime = datetime.utcnow()
+        self.ticker = ticker
+        self.request_range = request_range
+        self.forecast_range = forecast_range
+        self.status = 'INIT'
